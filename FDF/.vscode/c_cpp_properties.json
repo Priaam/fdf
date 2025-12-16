@@ -1,0 +1,28 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                // ----------------------------------------------------
+                // CHEMINS DE VOS HEADERS (CECI EST LE PLUS IMPORTANT)
+                // ----------------------------------------------------
+                "${workspaceFolder}/include",
+                "${workspaceFolder}/libs/Libft/include",
+                "${workspaceFolder}/libs/minilibx-linux",
+                
+                // Chemins standards pour les includes système (MLX)
+                "/usr/include/X11",
+                "/usr/include" 
+            ],
+            // ----------------------------------------------------
+            // CONFIGURATION GÉNÉRALE
+            // ----------------------------------------------------
+            "defines": [],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "linux-gcc-x64"
+        }
+    ],
+    "version": 4
+}
