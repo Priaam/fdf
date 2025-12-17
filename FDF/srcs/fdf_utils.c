@@ -6,7 +6,7 @@
 /*   By: pserre-s <priaserre@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 12:53:03 by pserre-s          #+#    #+#             */
-/*   Updated: 2025/12/17 18:12:48 by pserre-s         ###   ########.fr       */
+/*   Updated: 2025/12/17 20:34:04 by pserre-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,15 @@ int	fdf_get_color(char *s)
 			return (ft_atoi_base(hexa_code + 2, "0123456789abcdef"));
 	}
 	return (DEFAULT_COLOR);
+}
+
+int	fdf_check_extension(const char *filename)
+{
+	char	*dot;
+
+	dot = ft_strrchr(filename, '.');
+
+	if (!dot || dot == filename || ft_strncmp(dot, ".fdf", 5) != 0)
+		return (0);
+	return (1);
 }

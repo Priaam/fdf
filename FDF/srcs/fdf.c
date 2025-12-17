@@ -6,7 +6,7 @@
 /*   By: pserre-s <priaserre@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 02:43:38 by pserre-s          #+#    #+#             */
-/*   Updated: 2025/12/17 19:05:31 by pserre-s         ###   ########.fr       */
+/*   Updated: 2025/12/17 20:21:01 by pserre-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,14 +93,14 @@ int	main(int argc, char **argv)
 	t_var	vars;
 
 	ft_bzero(&vars, sizeof(t_var));
+	parsing_map(argv[1], &vars);
+	fdf_debug_print_map(&vars);
 	if (init_mlx(&vars) == 1)
 	{
 		close_window(&vars);
 		return (1);
 	}
 	setup_hooks(&vars);
-	parsing_map(argv[1], &vars);
-	fdf_debug_print_map(&vars);
 	mlx_loop(vars.mlx);
 	(void)argc;
 	return (0);

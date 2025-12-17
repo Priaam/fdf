@@ -6,7 +6,7 @@
 /*   By: pserre-s <priaserre@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 20:01:18 by pserre-s          #+#    #+#             */
-/*   Updated: 2025/12/17 19:01:00 by pserre-s         ###   ########.fr       */
+/*   Updated: 2025/12/17 20:35:57 by pserre-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,28 +56,6 @@ static void	fdf_get_map_dimension(t_var *vars, int fd)
 	vars->map.height = line_count;
 }
 
-// void	fill_map_matrix(const char *map_file, t_var *vars)
-// {
-// 	int	y;
-// 	int	fd;
-
-// 	vars->map.altitude_matrix = (int **)malloc(vars->map.height
-// 			* sizeof(int *));
-// 	if (!vars->map.altitude_matrix)
-// 		return ;
-// 	y = 0;
-// 	while (y < vars->map.height)
-// 	{
-// 		vars->map.altitude_matrix[y] = (int *)malloc(vars->map.width
-// 				* sizeof(int));
-// 		if (!vars->map.width)
-// 		{
-// 			return ;
-// 		}
-// 		y++;
-// 	}
-// }
-
 void	fdf_fill_map_matrix(t_var *vars, int fd)
 {
 	fdf_allocate_matrix(vars);
@@ -88,6 +66,10 @@ void	parsing_map(const char *map, t_var *vars)
 {
 	int		fd;
 
+	if (!map)
+		fdf_error_exit("Aucune map seléctionné. (./fdf <map.fdf>)");
+	if (!fdf_check_extension(map))
+		fdf_error_exit("Erreur: Le fichier doit être un .fdf");
 	fd = open(map, O_RDONLY);
 	if (fd < 0)
 		fdf_error_exit("L'ouverture de la map a echoué.");

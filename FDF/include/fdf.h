@@ -6,7 +6,7 @@
 /*   By: pserre-s <priaserre@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 02:43:45 by pserre-s          #+#    #+#             */
-/*   Updated: 2025/12/17 19:01:36 by pserre-s         ###   ########.fr       */
+/*   Updated: 2025/12/17 20:36:35 by pserre-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,14 @@ typedef struct s_img
 
 typedef struct s_point
 {
-	int	x;
-	int	y;
-	int	z;
+	int		x;
+	int		y;
+	int		z;
 
-	int	color;
+	int		color;
 
-	int	x_proj;
-	int	y_proj;
+	double	x_proj;
+	double	y_proj;
 }	t_point;
 
 typedef struct s_map
@@ -76,5 +76,6 @@ void	fdf_get_map_value(t_var *vars, int fd);
 void	fdf_error_exit(char *msg);
 int		fdf_is_line_empty(char *line);
 int		fdf_get_color(char *s);
+int		fdf_check_extension(const char *filename);
 
 #endif

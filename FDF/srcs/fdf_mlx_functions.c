@@ -6,7 +6,7 @@
 /*   By: pserre-s <priaserre@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/14 22:51:19 by pserre-s          #+#    #+#             */
-/*   Updated: 2025/12/17 19:12:30 by pserre-s         ###   ########.fr       */
+/*   Updated: 2025/12/17 19:35:33 by pserre-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,12 @@ static void	clean_mlx(void *mlx_ptr)
 
 int	close_window(t_var *vars)
 {
+	if (vars->map.points_matrix)
+	{
+		if (vars->map.points_matrix[0])
+			free(vars->map.points_matrix[0]);
+		free(vars->map.points_matrix);
+	}
 	if (vars->img.img)
 		mlx_destroy_image(vars->mlx, vars->img.img);
 	if (vars->window)
