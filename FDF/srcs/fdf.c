@@ -6,7 +6,7 @@
 /*   By: pserre-s <priaserre@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 02:43:38 by pserre-s          #+#    #+#             */
-/*   Updated: 2025/12/16 13:19:41 by pserre-s         ###   ########.fr       */
+/*   Updated: 2025/12/17 19:05:31 by pserre-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,29 @@ static int	init_mlx(t_var *vars)
 	return (0);
 }
 
+void    fdf_debug_print_map(t_var *vars)
+{
+    int y;
+    int x;
+    t_point p;
 
+    y = 0;
+    ft_printf("--- DEBUG MAP (%d x %d) ---\n", vars->map.width, vars->map.height);
+    while (y < vars->map.height)
+    {
+        x = 0;
+        while (x < vars->map.width)
+        {
+            p = vars->map.points_matrix[y][x];
+            // Affiche [x,y,z] en décimal et la couleur en Hexa
+            ft_printf("[%d,%d,%d | 0x%x] ", p.x, p.y, p.z, p.color);
+            x++;
+        }
+        ft_printf("\n"); // Nouvelle ligne pour chaque rangée de la map
+        y++;
+    }
+    ft_printf("--- END DEBUG ---\n");
+}
 
 int	main(int argc, char **argv)
 {
@@ -78,6 +100,7 @@ int	main(int argc, char **argv)
 	}
 	setup_hooks(&vars);
 	parsing_map(argv[1], &vars);
+	fdf_debug_print_map(&vars);
 	mlx_loop(vars.mlx);
 	(void)argc;
 	return (0);

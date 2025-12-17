@@ -6,7 +6,7 @@
 /*   By: pserre-s <priaserre@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 02:43:45 by pserre-s          #+#    #+#             */
-/*   Updated: 2025/12/16 13:51:01 by pserre-s         ###   ########.fr       */
+/*   Updated: 2025/12/17 19:01:36 by pserre-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 
 # define X_LEN 1920
 # define Y_LEN 1080
+
+# define DEFAULT_COLOR 0xFFFFFF
 
 typedef struct s_img
 {
@@ -67,9 +69,12 @@ void	setup_hooks(t_var *vars);
 
 // Parsing de la map
 void	parsing_map(const char *map, t_var *vars);
+void	fdf_allocate_matrix(t_var *vars);
+void	fdf_get_map_value(t_var *vars, int fd);
 
 // Fonctions utiles
 void	fdf_error_exit(char *msg);
 int		fdf_is_line_empty(char *line);
+int		fdf_get_color(char *s);
 
 #endif

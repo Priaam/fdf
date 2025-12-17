@@ -6,7 +6,7 @@
 /*   By: pserre-s <priaserre@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 20:01:18 by pserre-s          #+#    #+#             */
-/*   Updated: 2025/12/16 13:41:37 by pserre-s         ###   ########.fr       */
+/*   Updated: 2025/12/17 19:01:00 by pserre-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,12 +78,25 @@ static void	fdf_get_map_dimension(t_var *vars, int fd)
 // 	}
 // }
 
+void	fdf_fill_map_matrix(t_var *vars, int fd)
+{
+	fdf_allocate_matrix(vars);
+	fdf_get_map_value(vars, fd);
+}
+
 void	parsing_map(const char *map, t_var *vars)
 {
 	int		fd;
 
 	fd = open(map, O_RDONLY);
 	if (fd < 0)
-		return ;
+		fdf_error_exit("L'ouverture de la map a echoué.");
 	fdf_get_map_dimension(vars, fd);
+	close(fd);
+	fd = open(map, O_RDONLY);
+	if (fd < 0)
+		fdf_error_exit("La réouverture de la map a échoué.");
+	fdf_fill_map_matrix(vars, fd);
+	close(fd);
+	ft_printf("%d : %d", vars->map.width, vars->map.height);
 }

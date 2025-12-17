@@ -6,7 +6,7 @@
 /*   By: pserre-s <priaserre@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/14 22:51:19 by pserre-s          #+#    #+#             */
-/*   Updated: 2025/12/15 19:52:21 by pserre-s         ###   ########.fr       */
+/*   Updated: 2025/12/17 19:12:30 by pserre-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,13 @@
 
 void	my_pixel_put(t_img *data, int x, int y, int color)
 {
-	int	offset;
+	char	*offset;
 
 	if (x < 0 || x >= X_LEN || y < 0 || y >= Y_LEN)
 		return ;
-	offset = (y * data->line_len) + (x * (data->bits_per_pixel / 8));
-	*(unsigned int *)(offset + data->addr) = color;
+	offset = data->addr + (y * data->line_len)
+		+ (x * (data->bits_per_pixel / 8));
+	*(unsigned int *)offset = color;
 }
 
 void	setup_hooks(t_var *vars)
