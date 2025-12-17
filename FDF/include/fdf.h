@@ -6,7 +6,7 @@
 /*   By: pserre-s <priaserre@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 02:43:45 by pserre-s          #+#    #+#             */
-/*   Updated: 2025/12/17 20:36:35 by pserre-s         ###   ########.fr       */
+/*   Updated: 2025/12/17 22:01:37 by pserre-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,10 @@ typedef struct s_var
 {
 	void	*mlx;
 	void	*window;
+	double	zoom;
+	int		x_offset;
+	int		y_offset;
+
 	t_img	img;
 	t_map	map;
 }	t_var;
