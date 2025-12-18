@@ -6,7 +6,7 @@
 /*   By: pserre-s <priaserre@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 02:43:45 by pserre-s          #+#    #+#             */
-/*   Updated: 2025/12/17 22:01:37 by pserre-s         ###   ########.fr       */
+/*   Updated: 2025/12/18 13:12:27 by pserre-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # define Y_LEN 1080
 
 # define DEFAULT_COLOR 0xFFFFFF
+# define DEFAULT_ZOOM 100
 
 typedef struct s_img
 {
@@ -57,9 +58,14 @@ typedef struct s_var
 {
 	void	*mlx;
 	void	*window;
+
 	double	zoom;
 	int		x_offset;
 	int		y_offset;
+
+	double	z_scale;
+	double	angle_x;
+	double	angle_y;
 
 	t_img	img;
 	t_map	map;
@@ -81,5 +87,8 @@ void	fdf_error_exit(char *msg);
 int		fdf_is_line_empty(char *line);
 int		fdf_get_color(char *s);
 int		fdf_check_extension(const char *filename);
+
+// Dessiner la map
+void	init_variables(t_var *vars);
 
 #endif
