@@ -6,11 +6,24 @@
 /*   By: pserre-s <priaserre@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 12:53:03 by pserre-s          #+#    #+#             */
-/*   Updated: 2025/12/17 20:34:04 by pserre-s         ###   ########.fr       */
+/*   Updated: 2025/12/19 18:32:16 by pserre-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+void	fdf_init_variables(t_var *vars)
+{
+	ft_bzero(vars, sizeof(t_var));
+
+	vars->zoom = DEFAULT_ZOOM;
+	vars->x_offset = X_LEN / 2;
+	vars->y_offset = Y_LEN / 3;
+
+	vars->z_scale = 1;
+	vars->angle_x = 0.0;
+	vars->angle_x = 0.0;
+}
 
 void	fdf_error_exit(char *msg)
 {

@@ -6,7 +6,7 @@
 /*   By: pserre-s <priaserre@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 02:43:45 by pserre-s          #+#    #+#             */
-/*   Updated: 2025/12/18 13:12:27 by pserre-s         ###   ########.fr       */
+/*   Updated: 2025/12/19 18:30:13 by pserre-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # define Y_LEN 1080
 
 # define DEFAULT_COLOR 0xFFFFFF
-# define DEFAULT_ZOOM 100
+# define DEFAULT_ZOOM 2
 
 typedef struct s_img
 {
@@ -53,6 +53,16 @@ typedef struct s_map
 	int		width;
 	int		height;
 }	t_map;
+
+typedef struct s_bresenham
+{
+	int	dx;
+	int	dy;
+	int	sx;
+	int	sy;
+	int	error;
+	int	temp_error;
+}	t_bresenham;
 
 typedef struct s_var
 {
@@ -87,8 +97,11 @@ void	fdf_error_exit(char *msg);
 int		fdf_is_line_empty(char *line);
 int		fdf_get_color(char *s);
 int		fdf_check_extension(const char *filename);
+void	fdf_init_variables(t_var *vars);
 
 // Dessiner la map
-void	init_variables(t_var *vars);
+void	fdf_draw_line(t_var *vars, t_point start, t_point end);
+void	fdf_project_point(t_point *points, t_var *vars);
+void	fdf_draw_map(t_var *vars);
 
 #endif
