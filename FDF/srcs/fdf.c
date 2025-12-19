@@ -6,7 +6,7 @@
 /*   By: pserre-s <priaserre@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 02:43:38 by pserre-s          #+#    #+#             */
-/*   Updated: 2025/12/19 18:25:19 by pserre-s         ###   ########.fr       */
+/*   Updated: 2025/12/19 20:56:14 by pserre-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,20 +28,6 @@ void	color_screen(t_var *data, int color)
 		}
 		y++;
 	}
-}
-
-int	fun(int key, t_var *data)
-{
-	if (key == K_LEFT)
-		color_screen(data, 0xff0000);
-	else if (key == K_RIGHT)
-		color_screen(data, 0x00ff00);
-	else if (key == K_UP)
-		color_screen(data, 0x0000ff);
-	else if (key == K_ESC)
-		close_window(data);
-	mlx_put_image_to_window(data->mlx, data->window, data->img.img, 0, 0);
-	return (0);
 }
 
 static int	init_mlx(t_var *vars)

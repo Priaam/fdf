@@ -8,7 +8,7 @@ LIBFT_PATH  = libs/Libft
 INCLUDES_DIR = include/
 
 # --- SOURCES ET OBJETS ---
-SRCS        = fdf.c fdf_mlx_functions.c fdf_map_functions.c fdf_map_functions2.c fdf_draw_map.c fdf_draw_functions.c fdf_utils.c
+SRCS        = fdf.c fdf_mlx_functions.c fdf_map_functions.c fdf_map_functions2.c fdf_draw_map.c fdf_draw_functions.c fdf_map_control.c fdf_utils.c
 SRCS_FILES 	= $(addprefix $(SRCS_DIR), $(SRCS))
 OBJS        = $(SRCS:.c=.o)
 OBJS_FILES 	= $(addprefix $(OBJS_DIR), $(OBJS))

@@ -6,7 +6,7 @@
 /*   By: pserre-s <priaserre@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/14 22:51:19 by pserre-s          #+#    #+#             */
-/*   Updated: 2025/12/17 19:35:33 by pserre-s         ###   ########.fr       */
+/*   Updated: 2025/12/19 20:50:00 by pserre-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ void	my_pixel_put(t_img *data, int x, int y, int color)
 
 void	setup_hooks(t_var *vars)
 {
-	mlx_key_hook(vars->window, fun, vars);
+	mlx_key_hook(vars->window, fdf_keyboard_hook, vars);
+	mlx_mouse_hook(vars->window, fdf_mouse_hook, vars);
 	mlx_hook(vars->window, 17, 1L << 0, close_window, vars);
 }
 

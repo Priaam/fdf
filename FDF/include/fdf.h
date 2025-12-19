@@ -6,7 +6,7 @@
 /*   By: pserre-s <priaserre@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 02:43:45 by pserre-s          #+#    #+#             */
-/*   Updated: 2025/12/19 18:30:13 by pserre-s         ###   ########.fr       */
+/*   Updated: 2025/12/19 20:48:55 by pserre-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # define Y_LEN 1080
 
 # define DEFAULT_COLOR 0xFFFFFF
-# define DEFAULT_ZOOM 2
+# define DEFAULT_ZOOM 20
 
 typedef struct s_img
 {
@@ -84,7 +84,6 @@ typedef struct s_var
 // Fonctions MLX
 void	my_pixel_put(t_img *data, int x, int y, int color);
 int		close_window(t_var *vars);
-int		fun(int key, t_var *data);
 void	setup_hooks(t_var *vars);
 
 // Parsing de la map
@@ -104,4 +103,7 @@ void	fdf_draw_line(t_var *vars, t_point start, t_point end);
 void	fdf_project_point(t_point *points, t_var *vars);
 void	fdf_draw_map(t_var *vars);
 
+// Controle de la map
+int		fdf_keyboard_hook(int key, t_var *vars);
+int		fdf_mouse_hook(int button, int x, int y, t_var *vars);
 #endif
