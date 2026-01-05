@@ -6,7 +6,7 @@
 /*   By: pserre-s <priaserre@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 20:31:52 by pserre-s          #+#    #+#             */
-/*   Updated: 2025/12/19 20:50:42 by pserre-s         ###   ########.fr       */
+/*   Updated: 2026/01/05 14:51:31 by pserre-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ int	fdf_keyboard_hook(int key, t_var *vars)
 		vars->x_offset -= 10;
 	else if (key == K_RIGHT)
 		vars->x_offset += 10;
-	else if (key == K_UP)
-		vars->y_offset -= 10;
 	else if (key == K_DOWN)
+		vars->y_offset -= 10;
+	else if (key == K_UP)
 		vars->y_offset += 10;
 	else if (key == K_ESC)
 		close_window(vars);
@@ -32,7 +32,6 @@ int	fdf_mouse_hook(int button, int x, int y, t_var *vars)
 {
 	(void)x;
 	(void)y;
-
 	if (button == 4)
 		vars->zoom += 1;
 	else if (button == 5)

@@ -6,7 +6,7 @@
 /*   By: pserre-s <priaserre@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 02:43:45 by pserre-s          #+#    #+#             */
-/*   Updated: 2025/12/19 20:48:55 by pserre-s         ###   ########.fr       */
+/*   Updated: 2026/01/05 14:43:40 by pserre-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # define Y_LEN 1080
 
 # define DEFAULT_COLOR 0xFFFFFF
-# define DEFAULT_ZOOM 20
+# define DEFAULT_ZOOM 2
 
 typedef struct s_img
 {
