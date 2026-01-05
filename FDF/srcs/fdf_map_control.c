@@ -6,7 +6,7 @@
 /*   By: pserre-s <priaserre@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 20:31:52 by pserre-s          #+#    #+#             */
-/*   Updated: 2026/01/05 14:51:31 by pserre-s         ###   ########.fr       */
+/*   Updated: 2026/01/05 17:35:44 by pserre-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@ int	fdf_keyboard_hook(int key, t_var *vars)
 		vars->y_offset -= 10;
 	else if (key == K_UP)
 		vars->y_offset += 10;
+	else if (key == K_a)
+		vars->angle_z -= 0.05;
+	else if (key == K_d)
+		vars->angle_z += 0.05;
 	else if (key == K_ESC)
 		close_window(vars);
 	fdf_draw_map(vars);
@@ -42,4 +46,15 @@ int	fdf_mouse_hook(int button, int x, int y, t_var *vars)
 	}
 	fdf_draw_map(vars);
 	return (0);
+}
+
+void	fdf_rotate_z(double *x, double *y, double angle)
+{
+	double	prev_x;
+	double	prev_y;
+
+	prev_x = *x;
+	prev_y = *y;
+	*x = prev_x * cos(angle) - prev_y * sin(angle);
+	*y = prev_y * sin(angle) + prev_y * cos(angle);
 }

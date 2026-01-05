@@ -6,7 +6,7 @@
 /*   By: pserre-s <priaserre@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 12:51:47 by pserre-s          #+#    #+#             */
-/*   Updated: 2026/01/05 14:40:35 by pserre-s         ###   ########.fr       */
+/*   Updated: 2026/01/05 17:31:40 by pserre-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,14 @@ static void	fdf_iso(double *x, double *y, int z)
 
 void	fdf_project_point(t_point *points, t_var *vars)
 {
+	double	z;
+
 	points->x_proj = (double)points->x * vars->zoom;
 	points->y_proj = (double)points->y * vars->zoom;
-	fdf_iso(&points->x_proj, &points->y_proj, points->z * vars->zoom);
+	z = points->z * vars->zoom;
+
+	fdf_rotate_z(&points->x_proj, &points->y_proj, vars->angle_z);
+	fdf_iso(&points->x_proj, &points->y_proj, (int)z);
 	points->x_proj += vars->x_offset;
 	points->y_proj += vars->y_offset;
 }
