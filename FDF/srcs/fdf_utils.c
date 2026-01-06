@@ -6,7 +6,7 @@
 /*   By: pserre-s <priaserre@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 12:53:03 by pserre-s          #+#    #+#             */
-/*   Updated: 2026/01/05 17:32:23 by pserre-s         ###   ########.fr       */
+/*   Updated: 2026/01/06 15:58:49 by pserre-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	fdf_init_variables(t_var *vars)
 	vars->y_offset = Y_LEN / 3;
 	vars->z_scale = 1;
 	vars->angle_x = 0.0;
-	vars->angle_x = 0.0;
+	vars->angle_y = 0.0;
 	vars->angle_z = 0.0;
 }
 

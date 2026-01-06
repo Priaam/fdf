@@ -6,7 +6,7 @@
 /*   By: pserre-s <priaserre@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/14 22:51:19 by pserre-s          #+#    #+#             */
-/*   Updated: 2025/12/19 20:50:00 by pserre-s         ###   ########.fr       */
+/*   Updated: 2026/01/06 16:07:10 by pserre-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	close_window(t_var *vars)
 {
 	if (vars->map.points_matrix)
 	{
-		if (vars->map.points_matrix[0])
+		if (vars->map.points_matrix[0] != NULL)
 			free(vars->map.points_matrix[0]);
 		free(vars->map.points_matrix);
 	}
