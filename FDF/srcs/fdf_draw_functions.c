@@ -6,7 +6,7 @@
 /*   By: pserre-s <priaserre@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 12:51:47 by pserre-s          #+#    #+#             */
-/*   Updated: 2026/01/06 15:52:28 by pserre-s         ###   ########.fr       */
+/*   Updated: 2026/01/08 01:15:42 by pserre-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,3 +77,14 @@ void	fdf_project_point(t_point *points, t_var *vars)
 	points->x_proj += vars->x_offset;
 	points->y_proj += vars->y_offset;
 }
+
+// int	fdf_get_color(int start_color, int end_color, double pourcentage)
+// {
+// 	int	r;
+// 	int	g;
+// 	int	b;
+
+// 	if (start_color == end_color)
+// 		return (start_color);
+// 	r = (start_color)
+// }
