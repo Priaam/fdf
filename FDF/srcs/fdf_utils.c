@@ -6,7 +6,7 @@
 /*   By: pserre-s <priaserre@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 12:53:03 by pserre-s          #+#    #+#             */
-/*   Updated: 2026/01/11 20:37:39 by pserre-s         ###   ########.fr       */
+/*   Updated: 2026/01/11 22:50:21 by pserre-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void	fdf_init_variables(t_var *vars)
 	ft_bzero(vars, sizeof(t_var));
 	vars->zoom = DEFAULT_ZOOM;
 	vars->x_offset = X_LEN / 2;
-	vars->y_offset = Y_LEN / 3;
-	vars->z_scale = 1;
+	vars->y_offset = Y_LEN / 2;
+	vars->z_scale = 0.1;
 	vars->angle_x = 0.0;
 	vars->angle_y = 0.0;
 	vars->angle_z = 0.0;

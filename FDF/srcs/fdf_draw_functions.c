@@ -6,7 +6,7 @@
 /*   By: pserre-s <priaserre@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 12:51:47 by pserre-s          #+#    #+#             */
-/*   Updated: 2026/01/10 15:26:56 by pserre-s         ###   ########.fr       */
+/*   Updated: 2026/01/11 22:26:26 by pserre-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,12 @@ void	fdf_project_point(t_point *points, t_var *vars)
 	double	prev_x;
 	double	prev_y;
 
+	// 1. Mise à l'échelle et centrage
 	x = (points->x - vars->map.width / 2.0) * vars->zoom;
 	y = (points->y - vars->map.height / 2.0) * vars->zoom;
 	z = (points->z * vars->zoom) * vars->z_scale;
+
+	// 2. Application des rotations (Celles-ci permettent de bouger avec W,S,A,D...)
 	prev_y = y;
 	y = prev_y * vars->cos_x - z * vars->sin_x;
 	z = prev_y * vars->sin_x + z * vars->cos_x;
@@ -75,8 +78,12 @@ void	fdf_project_point(t_point *points, t_var *vars)
 	prev_y = y;
 	x = prev_x * vars->cos_z - prev_y * vars->sin_z;
 	y = prev_x * vars->sin_z + prev_y * vars->cos_z;
-	points->x_proj = (x - y) * 0.866025;
-	points->y_proj = (x + y) * 0.5 - z;
+
+	// 3. Projection ISOMÉTRIQUE (Pour donner l'effet 3D de base)
+	points->x_proj = (x - y) * cos(0.523599); // 0.523599 rad = 30 degrés
+	points->y_proj = (x + y) * sin(0.523599) - z;
+
+	// 4. Positionnement final à l'écran
 	points->x_proj += vars->x_offset;
 	points->y_proj += vars->y_offset;
 }

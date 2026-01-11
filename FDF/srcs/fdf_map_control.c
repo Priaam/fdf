@@ -6,7 +6,7 @@
 /*   By: pserre-s <priaserre@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 20:31:52 by pserre-s          #+#    #+#             */
-/*   Updated: 2026/01/11 22:05:28 by pserre-s         ###   ########.fr       */
+/*   Updated: 2026/01/11 22:19:00 by pserre-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ int	fdf_update_movement(t_var *vars)
 		vars->angle_z -= 0.1;
 	if (vars->keys[K_D])
 		vars->angle_z += 0.1;
-	// else if (vars->keys[K_S)
-	// 	vars->angle_x -= 0.2;
-	// else if (vars->keys[K_W)
-	// 	vars->angle_x += 0.2;
+	if (vars->keys[K_S])
+		vars->angle_x -= 0.1;
+	if (vars->keys[K_W])
+		vars->angle_x += 0.1;
 	if (vars->keys[K_E])
 		vars->angle_y -= 0.1;
 	if (vars->keys[K_Q])

@@ -6,7 +6,7 @@
 /*   By: pserre-s <priaserre@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 02:43:38 by pserre-s          #+#    #+#             */
-/*   Updated: 2026/01/10 14:29:26 by pserre-s         ###   ########.fr       */
+/*   Updated: 2026/01/11 22:52:11 by pserre-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,16 @@ int	main(int argc, char **argv)
 	{
 		fdf_init_variables(&vars);
 		parsing_map(argv[1], &vars);
+		if (((double)X_LEN / vars.map.width)
+			< ((double)Y_LEN / vars.map.height))
+			vars.zoom = ((double)X_LEN / vars.map.width) * 0.45;
+		else
+			vars.zoom = ((double)Y_LEN / vars.map.height) * 0.45;
+		if (vars.zoom < 1)
+			vars.zoom = 1;
 		if (init_mlx(&vars) == 1)
 		{
-			close_window(&vars);
-			return (1);
+			fdf_error_exit("Erreur d'initialisation des variables.");
 		}
 		fdf_draw_map(&vars);
 		setup_hooks(&vars);

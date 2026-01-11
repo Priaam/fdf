@@ -6,7 +6,7 @@
 /*   By: pserre-s <priaserre@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 18:02:16 by pserre-s          #+#    #+#             */
-/*   Updated: 2026/01/11 18:00:53 by pserre-s         ###   ########.fr       */
+/*   Updated: 2026/01/11 22:21:02 by pserre-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	fdf_draw_point(t_var *vars, int x, int y)
 static void	fdf_init_sin_cos(t_var *vars)
 {
 	vars->cos_x = cos(vars->angle_x);
-	vars->sin_x = sin(vars->sin_x);
+	vars->sin_x = sin(vars->angle_x);
 	vars->cos_y = cos(vars->angle_y);
 	vars->sin_y = sin(vars->angle_y);
 	vars->cos_z = cos(vars->angle_z);
