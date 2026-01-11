@@ -6,7 +6,7 @@
 /*   By: pserre-s <priaserre@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 12:51:47 by pserre-s          #+#    #+#             */
-/*   Updated: 2026/01/08 01:15:42 by pserre-s         ###   ########.fr       */
+/*   Updated: 2026/01/10 15:26:56 by pserre-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,26 +54,29 @@ void	fdf_draw_line(t_var *vars, t_point p1, t_point p2)
 	my_pixel_put(&vars->img, p2.x, p2.y, p1.color);
 }
 
-static void	fdf_iso(double *x, double *y, int z)
-{
-	double	previous_x;
-	double	previous_y;
-
-	previous_x = *x;
-	previous_y = *y;
-	*x = (previous_x - previous_y) * cos(0.523599);
-	*y = -z + (previous_x + previous_y) * sin(0.523599);
-}
-
 void	fdf_project_point(t_point *points, t_var *vars)
 {
+	double	x;
+	double	y;
 	double	z;
+	double	prev_x;
+	double	prev_y;
 
-	points->x_proj = (double)points->x * vars->zoom;
-	points->y_proj = (double)points->y * vars->zoom;
-	z = points->z * vars->zoom;
-	fdf_rotate_z(&points->x_proj, &points->y_proj, vars->angle_z);
-	fdf_iso(&points->x_proj, &points->y_proj, (int)z);
+	x = (points->x - vars->map.width / 2.0) * vars->zoom;
+	y = (points->y - vars->map.height / 2.0) * vars->zoom;
+	z = (points->z * vars->zoom) * vars->z_scale;
+	prev_y = y;
+	y = prev_y * vars->cos_x - z * vars->sin_x;
+	z = prev_y * vars->sin_x + z * vars->cos_x;
+	prev_x = x;
+	x = prev_x * vars->cos_y + z * vars->sin_y;
+	z = -prev_x * vars->sin_y + z * vars->cos_y;
+	prev_x = x;
+	prev_y = y;
+	x = prev_x * vars->cos_z - prev_y * vars->sin_z;
+	y = prev_x * vars->sin_z + prev_y * vars->cos_z;
+	points->x_proj = (x - y) * 0.866025;
+	points->y_proj = (x + y) * 0.5 - z;
 	points->x_proj += vars->x_offset;
 	points->y_proj += vars->y_offset;
 }

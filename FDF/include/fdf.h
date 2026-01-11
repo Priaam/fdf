@@ -6,7 +6,7 @@
 /*   By: pserre-s <priaserre@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 02:43:45 by pserre-s          #+#    #+#             */
-/*   Updated: 2026/01/05 17:30:37 by pserre-s         ###   ########.fr       */
+/*   Updated: 2026/01/11 20:42:24 by pserre-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,15 @@ typedef struct s_var
 	double	angle_y;
 	double	angle_z;
 
+	double	cos_x;
+	double	sin_x;
+	double	cos_y;
+	double	sin_y;
+	double	cos_z;
+	double	sin_z;
+
+	int		keys[65536];
+
 	t_img	img;
 	t_map	map;
 }	t_var;
@@ -98,14 +107,16 @@ int		fdf_is_line_empty(char *line);
 int		fdf_get_color(char *s);
 int		fdf_check_extension(const char *filename);
 void	fdf_init_variables(t_var *vars);
+int		fdf_main_loop(t_var *vars);
 
 // Dessiner la map
 void	fdf_draw_line(t_var *vars, t_point start, t_point end);
 void	fdf_project_point(t_point *points, t_var *vars);
-void	fdf_draw_map(t_var *vars);
+int		fdf_draw_map(t_var *vars);
 
 // Controle de la map
-int		fdf_keyboard_hook(int key, t_var *vars);
+int		fdf_update_movement(t_var *vars);
 int		fdf_mouse_hook(int button, int x, int y, t_var *vars);
-void	fdf_rotate_z(double *x, double *y, double angle);
+int		fdf_key_press(int key, t_var *vars);
+int		fdf_key_release(int key, t_var *vars);
 #endif

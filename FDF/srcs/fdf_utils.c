@@ -6,7 +6,7 @@
 /*   By: pserre-s <priaserre@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 12:53:03 by pserre-s          #+#    #+#             */
-/*   Updated: 2026/01/06 15:58:49 by pserre-s         ###   ########.fr       */
+/*   Updated: 2026/01/11 20:37:39 by pserre-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,12 @@ void	fdf_init_variables(t_var *vars)
 	vars->angle_x = 0.0;
 	vars->angle_y = 0.0;
 	vars->angle_z = 0.0;
+	vars->cos_x = 0.0;
+	vars->sin_x = 0.0;
+	vars->cos_y = 0.0;
+	vars->sin_y = 0.0;
+	vars->cos_z = 0.0;
+	vars->sin_z = 0.0;
 }
 
 void	fdf_error_exit(char *msg)
@@ -68,4 +74,12 @@ int	fdf_check_extension(const char *filename)
 	if (!dot || dot == filename || ft_strncmp(dot, ".fdf", 5) != 0)
 		return (0);
 	return (1);
+}
+
+int	fdf_main_loop(t_var *vars)
+{
+    fdf_update_movement(vars);
+	fdf_draw_map(vars);
+
+	return (0);
 }
