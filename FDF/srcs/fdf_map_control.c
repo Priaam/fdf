@@ -6,13 +6,13 @@
 /*   By: pserre-s <priaserre@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 20:31:52 by pserre-s          #+#    #+#             */
-/*   Updated: 2026/01/11 22:19:00 by pserre-s         ###   ########.fr       */
+/*   Updated: 2026/01/12 02:02:06 by pserre-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	fdf_update_movement(t_var *vars)
+static void	fdf_update_translation_and_scale(t_var *vars)
 {
 	if (vars->keys[K_LEFT])
 		vars->x_offset -= 5;
@@ -22,6 +22,14 @@ int	fdf_update_movement(t_var *vars)
 		vars->y_offset -= 5;
 	if (vars->keys[K_UP])
 		vars->y_offset += 5;
+	if (vars->keys[K_8])
+		vars->z_scale += 0.01;
+	if (vars->keys[K_2])
+		vars->z_scale -= 0.01;
+}
+
+static void	fdf_update_rotation(t_var *vars)
+{
 	if (vars->keys[K_A])
 		vars->angle_z -= 0.1;
 	if (vars->keys[K_D])
@@ -34,9 +42,14 @@ int	fdf_update_movement(t_var *vars)
 		vars->angle_y -= 0.1;
 	if (vars->keys[K_Q])
 		vars->angle_y += 0.1;
+}
+
+void	fdf_update_movement(t_var *vars)
+{
+	fdf_update_translation_and_scale(vars);
+	fdf_update_rotation(vars);
 	if (vars->keys[K_ESC])
 		close_window(vars);
-	return (0);
 }
 
 int	fdf_mouse_hook(int button, int x, int y, t_var *vars)
@@ -58,24 +71,3 @@ int	fdf_mouse_hook(int button, int x, int y, t_var *vars)
 	vars->y_offset = y - (y - vars->y_offset) * zoom_factor;
 	return (0);
 }
-
-int	fdf_key_press(int key, t_var *vars)
-{
-	if (key < 65536)
-		vars->keys[key] = 1;
-	return (0);
-}
-
-int	fdf_key_release(int key, t_var *vars)
-{
-	if (key < 65536)
-		vars->keys[key] = 0;
-	return (0);
-}
-
-// void	fdf_reset_position(t_var *vars)
-// {
-// 	vars->angle_x = 0.0;
-// 	vars->angle_y = 0.0;
-// 	vars->angle_z = 0.0;
-// }

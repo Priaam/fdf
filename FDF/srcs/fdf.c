@@ -6,29 +6,11 @@
 /*   By: pserre-s <priaserre@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 02:43:38 by pserre-s          #+#    #+#             */
-/*   Updated: 2026/01/11 22:52:11 by pserre-s         ###   ########.fr       */
+/*   Updated: 2026/01/12 01:33:30 by pserre-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-void	color_screen(t_var *data, int color)
-{
-	int	x;
-	int	y;
-
-	y = 0;
-	while (y < Y_LEN)
-	{
-		x = 0;
-		while (x < X_LEN)
-		{
-			my_pixel_put(&data->img, x, y, color);
-			x++;
-		}
-		y++;
-	}
-}
 
 static int	init_mlx(t_var *vars)
 {
@@ -47,6 +29,13 @@ static int	init_mlx(t_var *vars)
 	}
 	vars->img.addr = mlx_get_data_addr(vars->img.img, &vars->img.bits_per_pixel,
 			&vars->img.line_len, &vars->img.endian);
+	return (0);
+}
+
+int	fdf_main_loop(t_var *vars)
+{
+	fdf_update_movement(vars);
+	fdf_draw_map(vars);
 	return (0);
 }
 

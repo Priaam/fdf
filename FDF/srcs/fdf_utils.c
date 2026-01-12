@@ -6,7 +6,7 @@
 /*   By: pserre-s <priaserre@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 12:53:03 by pserre-s          #+#    #+#             */
-/*   Updated: 2026/01/11 22:50:21 by pserre-s         ###   ########.fr       */
+/*   Updated: 2026/01/12 01:34:06 by pserre-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,12 +74,4 @@ int	fdf_check_extension(const char *filename)
 	if (!dot || dot == filename || ft_strncmp(dot, ".fdf", 5) != 0)
 		return (0);
 	return (1);
-}
-
-int	fdf_main_loop(t_var *vars)
-{
-    fdf_update_movement(vars);
-	fdf_draw_map(vars);
-
-	return (0);
 }

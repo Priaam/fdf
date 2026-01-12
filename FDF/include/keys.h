@@ -6,7 +6,7 @@
 /*   By: pserre-s <priaserre@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 13:48:40 by pserre-s          #+#    #+#             */
-/*   Updated: 2026/01/11 18:05:48 by pserre-s         ###   ########.fr       */
+/*   Updated: 2026/01/12 01:54:56 by pserre-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@
 #  define K_S		XK_s
 #  define K_Q		XK_q
 #  define K_E		XK_e
+#  define K_8		65431
+#  define K_2		65433
 
 # else
 
@@ -35,6 +37,14 @@
 #  define K_RIGHT	124
 #  define K_UP		126
 #  define K_DOWN	125
+#  define K_A		0
+#  define K_D		2
+#  define K_W		13
+#  define K_S		1
+#  define K_Q		12
+#  define K_E		14
+#  define K_8		91
+#  define K_2		84
 
 # endif
 
